@@ -1,0 +1,21 @@
+<div [ngClass]="{online: isOnline}" class="wrapper">
+    <div class="body">
+        <div class="picture">
+            <img [src]="url" alt="">
+        </div>
+        <div class="user-data">
+            <h2>{{ name }}</h2>
+            <div class="post-text">{{ status }}</div>
+        </div>
+    </div>
+    <ng-template #short_details>
+        <p class="status">Offline</p>
+    </ng-template>
+    <div *ngIf="isShowOnline; else short_details" class="details">
+        <p class="status">Online</p>
+    </div>
+    <button class="network" (click)="isShowOnline = !isShowOnline" (click)="isOnline = !isOnline">
+        {{isShowOnline ? "Offline" : "Online"}}
+    </button>
+  </div>
+
